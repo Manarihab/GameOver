@@ -1,6 +1,19 @@
 import {Games} from "./games.js"
 import {Details} from "./details.js"
 import {Ui} from "./ui.js"
+
+// Manual navbar toggle as fallback
+const navbarToggler = document.querySelector('.navbar-toggler');
+const navbarCollapse = document.querySelector('#navbarNav');
+
+if (navbarToggler && navbarCollapse) {
+    navbarToggler.addEventListener('click', function() {
+        navbarCollapse.classList.toggle('show');
+        const isExpanded = navbarCollapse.classList.contains('show');
+        navbarToggler.setAttribute('aria-expanded', isExpanded);
+    });
+}
+
 let defaultCat = "mmorpg"
 Games.GetGames(defaultCat);
 Ui.DisplayGames(defaultCat);
